@@ -1,0 +1,32 @@
+{% block content %}
+
+{# 	<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
+		{% for country in post.terms %}
+			<p>{{ country }}</p>
+		{% endfor %}
+		<p>{{post.preview.length(25)}}</p>
+		{% if post.thumbnail.src %}
+			<img src="{{post.thumbnail.src}}"/>
+		{% endif %} #}
+
+		<article class="tease tease-{{post.post_type}} all {% for term in post.terms %}{{term.slug}} {% endfor %}w-100 w-50-m w-33-l pa3" id="tease-{{post.ID}}">
+
+		<a href="{{post.link}}" class="db link teaser__parent">
+
+
+			<img src="{{post.thumbnail.src}}" class="w-100 h-auto teaser__child" />
+			
+
+			<div class="wola-gray ph2 pv3">
+				<h3 class="ma0 pb2 teaser__headline">{{post.title}}</h3>
+				{% for country in post.terms %}
+				<span class="f4 lato pb2 db">{{ post.get_field('name') }}</span>
+				<span class="f6 lato pt1 mid-gray db flex items-center"><i data-feather="map-pin" class="pr1 w1 h-auto"></i>{{ country }}</span>
+				{% endfor %}
+			</div>
+
+		</a>
+
+		</article>
+
+{% endblock %}

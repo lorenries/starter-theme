@@ -31,7 +31,13 @@ if ( is_day() ) {
 	$context['title'] = single_cat_title( '', false );
 	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 } else if ( is_post_type_archive() ) {
+	
 	$context['title'] = post_type_archive_title( '', false );
+	
+	$context['taxonomies'] = Timber::get_terms('country', array('hierarchical' => 0));
+
+	$context['description'] = get_post_type_object( 'photo_essay' ) -> description;
+
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 

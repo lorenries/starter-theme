@@ -1,0 +1,8 @@
+{% if TimberImage(item.image).caption %}
+<div class="flex flex-column flex-row-ns items-center justify-center pv4 pv5-ns">
+	{% block quote %}
+	{% endblock %}
+</div>
+{% else %}
+	<img src="{{ TimberImage(item.image).src }}" class="w-100" data-action="zoom"/>
+{% endif %}

@@ -3,3 +3,315 @@
  * Description: Starter Theme to use with Timber
  * Author: Upstatement and YOU!
 */
+
+/*Load Font*/
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway:400,800');
+
+.raleway {
+	font-family: 'Raleway', sans-serif;
+}
+
+.lato {
+	font-family: 'Lato', sans-serif;
+}
+
+/*Tachyons modifications*/
+
+.w3-5 {
+	width: 6rem;
+}
+
+.vh-60 {
+	height: 60vh;
+}
+
+/*Default styles override*/
+
+h1 {
+	font-size:3rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+	font-size:2.25rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+	font-size:1.5rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+h4 {
+	font-size:1.25rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+h5 {
+	font-size:1rem;
+	font-family: 'Raleway', sans-serif;
+}
+h6 {
+	font-size:.875rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+/*Custom styles*/
+
+.video-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100%;
+	padding-top: 56.25%;
+	overflow: hidden;
+}
+
+.video-container video {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	height: auto;
+	z-index: -100;
+}
+
+.text-background-black {
+	line-height: 1.8;
+	color: #fff;
+}
+
+.text-background-black span {
+	padding: .2em .3em;
+	box-shadow: 0.2em 0 0 rgba(#000,0.7), -0.2em 0 0 rgba(#000,0.7);
+	background-color: rgba(0,0,0,1);
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+	-moz-box-decoration-break: clone;
+}
+
+.hero-container__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero-container__buttons a {
+	margin: 0px 10px;
+}
+
+.text-shadow {
+	text-shadow: 1px 1px 3px #000;
+}
+
+.nav-drop {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	text-shadow: none;
+	width: 135%;
+}
+
+.menu-item:hover .nav-drop {
+	display: block;
+}
+
+.menu-item a:focus .nav-drop {
+	display: block;
+}
+
+.menu-border-animate {
+    text-decoration: none;
+}
+
+.menu-border-animate::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0.25rem;
+    background: #00b5ef;
+    transition: width .3s;
+}
+
+.menu-border-animate:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+.menu-selected {
+	text-decoration: none;
+}
+
+.menu-selected::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    background: #00b5ef;
+    transition: width .3s;
+}
+
+.page-title-container {
+	top: 65%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	   -moz-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	     -o-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+
+// .teaser__child {
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: flex-end;
+// 	top: 15px;
+// 	right: 15px;
+// 	bottom: 15px;
+// 	left: 15px;
+// 	width: auto;
+// 	height: auto;
+// 	opacity: 0;
+// 	background-color: rgba(0, 181, 239, 0.8);
+// 	-webkit-transition: opacity 0.5s ease;
+// 	-moz-transition: opacity 0.5s ease;
+// 	-o-transition: opacity 0.5s ease;
+// 	transition: opacity 0.5s ease;
+// }
+
+// .teaser__parent:hover .teaser__child {
+// 	opacity: 1;
+// }
+
+// .teaser__eye-icon {
+// 	top: 50%;
+// 	left: 50%;
+// 	-webkit-transform: translate(-50%, -50%);
+// 	   -moz-transform: translate(-50%, -50%);
+// 	    -ms-transform: translate(-50%, -50%);
+// 	     -o-transform: translate(-50%, -50%);
+// 	        transform: translate(-50%, -50%);
+// }
+
+
+.teaser__child {
+	box-shadow: 0 0 0 rgba(0, 181, 239, 0.8);
+	transition: box-shadow 0.2s ease;
+}
+
+.teaser__parent:hover .teaser__child {
+	box-shadow: 10px -10px 0 rgba(0, 181, 239, 0.8);
+}
+
+.teaser__headline {
+	color: #404041;
+	transition: color .2s ease;
+}
+
+.teaser__parent:hover .teaser__headline {
+	color: #00b5ef;
+}
+
+// .animate-text-in {
+// 	z-index: 10;
+// 	visibility: hidden;
+// 	opacity: 0;
+// 	-webkit-transition: all 250ms ease-in-out;
+// 	transition: all 250ms ease-in-out;
+// }
+
+
+.article-content a {
+	text-decoration: none;
+	color: #00b5ef;
+}
+
+.article-content a:hover, .article-content a:focus {
+	text-decoration: underline;
+}
+
+/*Custom WOLA colors*/
+
+.wola-blue { color: #00b5ef; }
+.bg-wola-blue { background-color: #00b5ef; }
+.b--wola-blue { border-color: #00b5ef; }
+
+.hover-wola-blue:hover,
+.hover-wola-blue:focus { color: #00b5ef; }
+
+.hover-bg-wola-blue:hover,
+.hover-bg-wola-blue:focus { background-color: #00b5ef; }
+
+.wola-purple { color: #603F99; }
+.bg-wola-purple { background-color: #603F99; }
+.b--wola-purple { border-color: #603F99; }
+
+.hover-wola-purple:hover,
+.hover-wola-purple:focus { color: #603F99; }
+
+.hover-bg-wola-purple:hover,
+.hover-bg-wola-purple:focus { background-color: #603F99; }
+
+.wola-green { color: #65BD60; }
+.bg-wola-green { background-color: #65BD60; }
+.b--wola-green { border-color: #65BD60; }
+
+.hover-wola-green:hover,
+.hover-wola-green:focus { color: #65BD60; }
+
+.hover-bg-wola-green:hover,
+.hover-bg-wola-green:focus { background-color: #65BD60; }
+
+.wola-gray { color: #404041; }
+.bg-wola-gray { background-color: #404041; }
+.b--wola-gray { border-color: #404041; }
+
+.hover-wola-gray:hover,
+.hover-wola-gray:focus { color: #404041; }
+
+.hover-bg-wola-gray:hover,
+.hover-bg-wola-gray:focus { background-color: #404041; }
+
+.wola-warm-gray { color: #D5D0CA; }
+.bg-wola-warm-gray { background-color: #D5D0CA; }
+.b--wola-warm-gray { border-color: #D5D0CA; }
+
+.hover-wola-warm-gray:hover,
+.hover-wola-warm-gray:focus { color: #D5D0CA; }
+
+.hover-bg-wola-warm-gray:hover,
+.hover-bg-wola-warm-gray:focus { background-color: #D5D0CA; }
+
+.wola-red { color: #DA1A32; }
+.bg-wola-red { background-color: #DA1A32; }
+.b--wola-red { border-color: #DA1A32; }
+
+.hover-wola-red:hover,
+.hover-wola-red:focus { color: #DA1A32; }
+
+.hover-bg-wola-red:hover,
+.hover-bg-wola-red:focus { background-color: #DA1A32; }
+
+.wola-orange { color: #F26322; }
+.bg-wola-orange { background-color: #F26322; }
+.b--wola-orange { border-color: #F26322; }
+
+.hover-wola-orange:hover,
+.hover-wola-orange:focus { color: #F26322; }
+
+.hover-bg-wola-orange:hover,
+.hover-bg-wola-orange:focus { background-color: #F26322; }
+
+.wola-yellow { color: #F9C606; }
+.bg-wola-yellow { background-color: #F9C606; }
+.b--wola-yellow { border-color: #F9C606; }
+
+.hover-wola-yellow:hover,
+.hover-wola-yellow:focus { color: #F9C606; }
+
+.hover-bg-wola-yellow:hover,
+.hover-bg-wola-yellow:focus { background-color: #F9C606; }

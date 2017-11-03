@@ -1,0 +1,29 @@
+<div class="video-container">
+
+	<video autoplay muted loop poster="{{TimberImage(post.get_field('fallback_image')).src}}" class="mw-100">
+	    
+	    <source src="{{ post.get_field('video_location') }}" type="video/mp4">
+
+	</video>
+
+	<div class="main-container static pt3 pv0-ns absolute-ns top-0 right-0 w-100 h-100 flex justify-center items-center">
+
+	<div class="hero-container mw9">
+		
+		<h1 class="text-background-black raleway ph3 f4 f3-m f1-l fw8 tc"><span>{{ post.page_headline }}</span></h1>
+
+		<div class="hero-container__buttons">
+	
+			{% for button in post.get_field('buttons') %}
+			    <div class="ph3 pv2">
+			        <a href="{{button.page_link}}" class="f6 f5-m f4-l link grow ph4 pv3 mb2 dib white bg-wola-blue shadow-4 flex items-center">{{button.text}}</a>
+			    </div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+	</div>
+
+
+</div>

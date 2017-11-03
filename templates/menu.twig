@@ -1,9 +1,9 @@
 {% if menu %}
-	<ul>
+	<ul class="dib list">
 	{% for item in menu %}
-		<li class="{{ item.classes | join(' ') }}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-			{% include "menu.twig" with {'menu': item.get_children} %}
+		<li class="menu-item dib relative pv2 ph3 mh3 bg-near-black hover-wola-blue">
+			<a href="{{ item.link }}" class="white f5-s f4-m f3-l link flex items-center">{{ item.title }}</a>
+			{% include  "partial/sub-menu.twig" %}
 		</li>
 	{% endfor %}
 	</ul>

@@ -1,0 +1,19 @@
+{% if post.get_field('logo_position') == "Static" %}
+<header class="header w-100 pv3 static">
+{% elseif post.get_field('logo_position') == "Absolute" %}
+<header class="header w-100 pv3 static absolute-ns">
+{% endif %}
+
+	{% block header %}
+
+		<div class="mw9 ph3 center flex items-center pv3">
+			<div class="logo w-100 w-10-ns" role="banner">
+				<a class="logo-link link" href="{{site.url}}" rel="home"><img src="/wp-content/uploads/2017/10/cropped-WOLA_icon_blue.png" class="w3-5 h-auto" alt="logo" /></a>
+			</div>
+			<nav id="nav-main" class="nav-main pa3 w-100 w-90-ns tr z-9999" role="navigation">
+				{% include "menu.twig" with {'menu': menu.get_items} %}
+			</nav><!-- #nav -->
+		</div>
+
+	{% endblock %}
+</header>

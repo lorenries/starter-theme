@@ -1,0 +1,21 @@
+{% extends "page.twig" %}
+
+{% block content %}
+
+	{% include 'hero.twig' %}
+
+	 <div class="pv5-ns">
+	 	<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+	 		<section class="article-content">
+	 			<div class="article-body mw7 lh-copy f5 f4-ns wola-gray center ph3">
+	 				{{post.content}}
+	 			</div>
+	 		</section>
+
+			{% include 'archive-photo_essay.twig' %}
+
+	 	</article>
+	 </div>
+
+
+{% endblock %}

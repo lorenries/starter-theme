@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<div class="content-wrapper">
+		<article class="post-type-{{ post.post_type }} mw9 center ph3 near-white" id="post-{{ post.ID }}">
+			<section class="article-content center">
+				<h1 class="article-h1 f1 f-subheadline-l tc pv2 pv4-l">{{ post.title }}</h1>
+				<div class="article-body f4 f3-l measure-wide lh-copy center">
+					{{post.content}}
+				</div>
+			</section>
+			
+			<section id="essay lato">
+			
+			{% for item in post.get_field('photo_essay') %}
+			    {% if item.acf_fc_layout == 'image_full_row' %}
+			    	<img src="{{ TimberImage(item.image).src }}" srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src|retina(1) }} 1x, {{ TimberImage(item.image).src|retina(2) }} 2x" class="w-100 pv4 pv5-ns" data-action="zoom"/>
+			    {% elseif item.acf_fc_layout == 'image_quote_right_row' %}
+			        {% include "components/photo-essay/quote-right.twig" %}
+			    {% elseif item.acf_fc_layout == 'image_quote_left_row' %}
+			         {% include "components/photo-essay/quote-left.twig" %}
+			    {% elseif item.acf_fc_layout == 'text_row' %}
+			        <p class="measure f4 f3-ns lh-copy center pv4">{{ item.text }}</p>
+		        {% elseif item.acf_fc_layout == 'credit_row' %}
+		            <div class="measure-narrow f3 lh-copy center pb5">{{ item.credits }}</div>
+			    {% endif %}
+			{% endfor %}	
+			</section>
+
+		</article>
+	</div>
+
+	<!-- /content-wrapper -->
+
+{% endblock %}
+
+{% block scripts %}
+	<script src="{{ site.theme.link }}/static/js/transition.js"></script>
+	<link href="{{ site.theme.link }}/static/css/zoom.css" rel="stylesheet">
+	<script src="{{ site.theme.link }}/static/js/zoom.min.js"></script>
+{% endblock %}

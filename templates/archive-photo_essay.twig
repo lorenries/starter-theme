@@ -1,0 +1,32 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+<section id="content" role="main" class="content-wrapper mw8 ph3 center wola-gray">
+
+	{% if title %}<h1 class="f1 center lh-title pv4 tc">{{title}}</h1>{% endif %}
+
+	<div class="mw7 lh-copy f5 f4-ns wola-gray center ph3 pb4">
+		{{description}}
+	</div>
+
+	<ul class="list flex justify-around f5 f4-m f3-l ph2 pv3 js-filter-group">
+		<li class="dib mh2 mh3-m mh4-l"><a href="#" class="link wola-gray menu-selected" data-filter="all">All</a></li>
+		{% for country in taxonomies %}
+			<li class="dib mh2 mh3-m mh4-l"><a href="#" class="link wola-gray menu-border-animate" data-filter="{{country.slug}}">{{country.name}}</a></li>
+		{% endfor %}
+	</ul>
+
+	<div class="mw8 center isotope-grid">
+		{% for post in posts %}
+			{% include 'tease-photo_essay.twig' %}
+		{% endfor %}
+	</div>
+
+</section>
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
+{% endblock %}
+
+{% endblock %}
