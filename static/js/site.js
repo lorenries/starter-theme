@@ -1,17 +1,56 @@
 jQuery( document ).ready( function( $ ) {
 
-  var $isotopGrid = $('.isotope-grid');
-  
-  $isotopGrid.isotope({
-    // options
-    layoutMode: 'fitRows'
+  feather.replace();
+
+  var $mobileMenuButton = $('.js-menu-button');
+  var $mobileMenu = $('.js-menu-mobile');
+  var $body = $('body');
+
+  $mobileMenuButton.unbind('click').click(function() {
+  	event.preventDefault();
+  	if ($mobileMenuButton.hasClass('open')) {
+  		toggleMenuClose();
+  	} else {
+  		toggleMenuOpen();
+  	}
+  })
+
+  function toggleMenuOpen() {
+  	$mobileMenu.animate({
+  		height: '100vh',
+  		top: '0'
+  	}, 800, 'swing', function() {
+  		$mobileMenuButton.html('<i data-feather="x" class="w2 h-auto pa1"></i>');
+  		feather.replace();
+  	});
+  	$body.addClass('overflow-hidden');
+  	$mobileMenuButton.addClass('open');
+  }
+
+  function toggleMenuClose() {
+  	$mobileMenu.animate({
+  		height: '0px',
+  		top: '-100%'
+  	}, 500, 'swing', function() {
+  		$mobileMenuButton.html('<i data-feather="menu" class="w2 h-auto pa1"></i>');
+  		feather.replace();
+  	});
+  	$body.removeClass('overflow-hidden');
+  	$mobileMenuButton.removeClass('open');
+  }
+
+  var $isotopGrid = $('.isotope-grid').imagesLoaded( function() {
+    // init Isotope after all images have loaded
+    $isotopGrid.isotope({
+      // options
+      layoutMode: 'fitRows'
+    });
   });
 
   $('.js-filter-group').on( 'click', 'a', function() {
   	event.preventDefault();
     var filterValue = $(this).attr('data-filter');
     $isotopGrid.isotope({ filter: '.' + filterValue });
-    console.log($(this).parent().parent().children().children());
     $(this).parent().parent().children().children().removeClass('menu-selected');
     if (!$(this).parent().parent().children().children().hasClass('menu-border-animate')) {
     	$(this).parent().parent().children().children().addClass('menu-border-animate')

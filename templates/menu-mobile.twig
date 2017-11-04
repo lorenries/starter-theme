@@ -1,0 +1,18 @@
+{% if menu %}
+	<ul class="relative db list tl ma0">
+	{% for item in menu %}
+		<li class="menu-item db relative pv3 white">
+			<a href="{{ item.link }}" class="f3 f2-m f2-l link near-white flex items-center">{{ item.title }}</a>
+			{% if item.children %}
+			    <ul class="list pl3 pt2 tl near-white">
+			        {% for child in item.children %}
+			            <li class="mv2">
+			                <a href="{{ child.link }}" class="dib near-white f5-s f4-m f3-l link">{{ child.title }}</a>
+			            </li>
+			        {% endfor %}
+			    </ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

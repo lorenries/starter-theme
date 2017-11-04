@@ -4,7 +4,7 @@
 
 	{% include 'hero.twig' %}
 
-	 <div class="pv5-ns">
+	 <div class="pv4-ns">
 	 	<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
 	 		<section class="article-content">
 	 			<div class="article-body mw7 lh-copy f5 f4-ns wola-gray center ph3">
@@ -12,10 +12,19 @@
 	 			</div>
 	 		</section>
 
-			{% include 'archive-photo_essay.twig' %}
+			<section class="mw8 center wola-gray">
+				<h2 class="center lh-title pv4 tc">Photo Essays: The Human Cost of Drug Policies in the Americas</h2>
+				{% include 'photo-essays-sortable.twig' with {'posts': photo_essays, 'description': description} %}
+			</section>
+
+			{% include 'components/partners.twig' %}
 
 	 	</article>
 	 </div>
 
+{% endblock %}
 
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
+<script src="//npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 {% endblock %}

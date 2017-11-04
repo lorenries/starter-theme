@@ -1,7 +1,7 @@
 {% if post.get_field('page_background_color') == 'Dark' %}
-	<body class="{{body_class}} lato bg-near-black" data-template="base.twig">
+	<body class="{{body_class}} w-100 lato bg-near-black" data-template="base.twig">
 {% elseif post.get_field('page_background_color') == 'Light' %}
-	<body class="{{body_class}} lato bg-near-white ba b--black bw3" data-template="base.twig">
+	<body class="{{body_class}} w-100 lato bg-near-white" data-template="base.twig">
 {% else %}
-	<body class="{{body_class}} lato bg-near-white ba b--black bw3" data-template="base.twig">
+	<body class="{{body_class}} w-100 lato bg-near-white" data-template="base.twig">
 {% endif %}
