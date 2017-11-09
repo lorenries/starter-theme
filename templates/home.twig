@@ -1,4 +1,4 @@
-{% extends "page.twig" %}
+{% extends "base.twig" %}
 
 {% block content %}
 
@@ -13,8 +13,7 @@
 	 		</section>
 
 			<section class="mw8 center wola-gray">
-				<h2 class="center lh-title pv4 tc">Photo Essays: The Human Cost of Drug Policies in the Americas</h2>
-				{% include 'photo-essays-sortable.twig' with {'posts': photo_essays, 'description': description} %}
+				{% include 'photo-essays-sortable.twig' with {'posts': photo_essays} %}
 			</section>
 
 			{% include 'components/partners.twig' %}
@@ -25,6 +24,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"></script>
-<script src="//npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+<script src="{{ site.theme.link }}/static/js/isotope.pkgd.min.js"></script>
+<script src="{{ site.theme.link }}/static/js/imagesloaded.pkgd.min.js"></script>
 {% endblock %}

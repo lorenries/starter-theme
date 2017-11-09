@@ -1,0 +1,20 @@
+{% extends 'page.twig' %}
+
+{% block content %}
+
+<section id="content" role="main" class="content-wrapper mw8 ph3 center wola-gray">
+
+	<div class="mw7 lh-copy f5 f4-ns wola-gray center ph3 pb4">
+		{{post.content}}
+	</div>
+
+	{% include 'photo-essays-sortable.twig' with {"posts": photo_essays, "taxonomies": taxonomies} %}
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ site.theme.link }}/static/js/isotope.pkgd.min.js"></script>
+<script src="{{ site.theme.link }}/static/js/imagesloaded.pkgd.min.js"></script>
+{% endblock %}

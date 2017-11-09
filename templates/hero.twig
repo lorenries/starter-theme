@@ -1,29 +1,31 @@
 <div class="video-container">
 
-	<video autoplay muted loop poster="{{TimberImage(post.get_field('fallback_image')).src}}">
+	<div class="overlay"></div>
+
+	<video autoplay muted loop poster="{{TimberImage(post.get_field('fallback_image')).src}}" class="z-0">
 	    
 	    <source src="{{ post.get_field('video_location') }}" type="video/mp4">
 
 	</video>
 
-	<div class="main-container static pv3 pt5-ns absolute-ns top-0 right-0 w-100 h-100 flex justify-center items-end items-center-l">
+	<div class="main-container static pv3 pt5-ns absolute-ns top-0 right-0 w-100 h-100 flex flex-column flex-row-ns justify-center items-end items-center-l">
 
-	<div class="hero-container mw9">
+		<div class="hero-container mw9 z-2">
+			
+			<h1 class="text-background-black raleway ph3 f4 f3-m f1-l fw8 tc"><span>{{ post.page_headline }}</span></h1>
+
+			<div class="flex flex-column flex-row-ns justify-center items-center">
 		
-		<h1 class="text-background-black raleway ph3 f4 f3-m f1-l fw8 tc"><span>{{ post.page_headline }}</span></h1>
+				{% for button in post.get_field('buttons') %}
+				    <div class="ph2 pv1 ph3-l pv2-l">
+				        <a href="{{button.page_link}}" class="f6 f5-m f4-l link grow ph2 pv2 ph3-m ph4-l pv3-l mb2 mh2 dib white bg-wola-blue shadow-4 flex items-center">{{button.text}}</a>
+				    </div>
+				{% endfor %}
 
-		<div class="flex justify-center items-center">
-	
-			{% for button in post.get_field('buttons') %}
-			    <div class="ph2 pv1 ph3-l pv2-l">
-			        <a href="{{button.page_link}}" class="f6 f5-m f4-l link grow ph2 pv2 ph3-m ph4-l pv3-l mb2 mh2 dib white bg-wola-blue shadow-4 flex items-center">{{button.text}}</a>
-			    </div>
-			{% endfor %}
+			</div>
 
 		</div>
 
 	</div>
-	</div>
-
 
 </div>

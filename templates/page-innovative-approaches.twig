@@ -1,0 +1,28 @@
+{% extends 'page.twig' %}
+
+{% block content %}
+
+<section id="content" role="main" class="article-content content-wrapper mw8 ph3 center wola-gray">
+
+	<div class="article-body mw7 lh-copy f5 f4-ns wola-gray center ph3 pb2">
+		{{post.content}}
+	</div>
+
+	{% for item in post.get_field('innovative_approaches') %}
+
+		<div class="bg-white br3 ba b--black-10 pa2 pa3-ns ph5-l mv4 flex flex-column flex-row-ns justify-center items-center w-100 mw8">
+			<div class="pr3 pr5-l order-1 order-0-ns flex flex-column items-center justify-center">
+				<span class="dn db-ns f-headline stroke-effect">{{loop.index}}</span>
+				<a href="{{item.button_download}}" class="dib f6 f5-m f4-l link grow ph2 pv2 ph3-m ph3-l pv3-l mv3 white bg-wola-blue shadow-4"><span class="flex items-center"><i data-feather="download" class="pr2"></i>{{item.button_text}}</span></a>
+			</div>
+			<div class="ph2 pa0-ns order-0 order-1-ns">
+				<h2 class="f3">{{item.title}}</h2>
+				<div class="lh-title f5">{{item.description}}</div>
+			</div>
+		</div>
+
+	{% endfor %}
+
+</section>
+
+{% endblock %}

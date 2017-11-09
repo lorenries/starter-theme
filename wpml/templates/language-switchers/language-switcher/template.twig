@@ -1,0 +1,7 @@
+{% for code, language in languages %}
+<li class="wpml-menu-item dib relative pv2 ph3 mh3 bg-near-black hover-wola-blue">
+   <a href="{{ language.url }}" class="white f5-s f4-m f3-l link">
+       <span class="flex items-center"><i data-feather="globe" class="pr1"></i>{{ language.native_name }}</span>
+   </a>
+</li>
+ {% endfor %}

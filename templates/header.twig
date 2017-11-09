@@ -1,26 +1,26 @@
 {% if post.get_field('logo_position') == "Static" %}
-<header class="header w-100 pa3 static">
+<header class="header w-100 pv3 ph3 ph4-ns static">
 {% elseif post.get_field('logo_position') == "Absolute" %}
-<header class="header w-100 pa3 static absolute-ns">
+<header class="header w-100 pv3 ph3 ph4-ns static absolute-ns z-999">
 {% else %}
-<header class="header w-100 pa3 static">
+<header class="header w-100 pv3 ph3 ph4-ns static">
 {% endif %}
 
 	{% block header %}
 
-		<div class="mw9 center flex items-center justify-between">
+		<div class="mw9 center flex items-center justify-between z-3">
 			
-			<div class="logo w-100 w-10-ns" role="logo">
+			<div class="logo w-20" role="logo">
 				<a class="logo-link link" href="{{site.url}}" rel="home"><img src="/wp-content/uploads/2017/10/cropped-WOLA_icon_blue.png" class="w3-5 h-auto" alt="logo" /></a>
 			</div>
 			
-			<nav id="nav-main" class="nav-main w-100 w-90-ns pa3 tr z-1 dn db-l" role="navigation">
+			<nav id="nav-main" class="nav-main pa3 tr z-1 dn db-l" role="navigation">
 				{% include "menu.twig" with {'menu': menu.get_items} %}
 			</nav><!-- #nav -->
 			
-			<a class="db dn-l bg-near-black near-white bn flex items-center justify-center js-menu-button z-2" href="#"><i data-feather="menu" class="w2 h-auto pa1"></i></a>
+			<a class="db dn-l bg-near-black near-white bn flex items-center justify-center js-menu-button z-4" href="#"><i data-feather="menu" class="w2 h-auto pa1"></i></a>
 			
-			<nav id="nav-mobile" class="fixed bg-near-black o-90 js-menu-mobile flex justify-center items-center" style="height: 0px; top: -100%; left: 0; width: 100vw;">
+			<nav id="nav-mobile" class="fixed bg-near-black js-menu-mobile justify-start items-start z-3 dn overflow-y-scroll" style="height: 0px; top: -100%; left: 0; width: 100vw;">
 			  	{% include "menu-mobile.twig" with {'menu': menu.get_items} %}
 			</nav>
 		</div>

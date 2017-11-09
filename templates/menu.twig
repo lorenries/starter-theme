@@ -1,10 +1,11 @@
 {% if menu %}
-	<ul class="dib list ">
+	<ul class="dib list ma0 pa0 flex items-center">
 	{% for item in menu %}
-		<li class="menu-item dib relative pv2 ph3 mh3 bg-near-black hover-wola-blue">
-			<a href="{{ item.link }}" class="white f5-s f4-m f3-l link flex items-center">{{ item.title }}</a>
+		<li class="menu-item dib relative pv2 ph3 mh3 bg-near-black">
+			<a href="{{ item.link }}" class="white f5-s f4-m f3-l link">{{ item.title }}</a>
 			{% include  "partial/sub-menu.twig" %}
 		</li>
 	{% endfor %}
+	{% do action('wpml_add_language_selector') %}
 	</ul>
 {% endif %}

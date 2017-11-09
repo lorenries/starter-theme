@@ -1,0 +1,25 @@
+{% if post.get_field('related_post') %}
+
+	<section class="mw8 pa3 pb4 center wola-gray">
+
+		{% for item in post.get_field('related_post') %}
+
+			<div class="bg-white br3 ba b--black-10 flex flex-column flex-row-l justify-center items-center w-100 mw8 overflow-hidden mb4">
+				
+				<div class="w-100 w-30-l min-h-100 self-stretch">
+					<div class="aspect-ratio--16x9 aspect-ratio--1x1-l min-h-100" style="background: url('{{ TimberImage(item.thumbnail_image).src|resize(500) }}') no-repeat center center; background-size: cover;"></div>
+				</div>
+
+				<div class="w-100 w-70-l pa3 pl4-ns">
+					<h2 class="f3"><a href="{{item.button_url}}" class="link wola-gray hover-wola-blue">{{item.title}}</a></h2>
+					<div class="lh-title f5 article-body">{{item.description}}</div>
+					<a href="{{item.button_url}}" class="dib f5 f4-l link grow pa3 mv3 white bg-wola-blue shadow-4"><span class="flex items-center">{{item.button_text}}</span></a>
+				</div>
+
+			</div>
+
+		{% endfor %}
+		
+	</section>
+
+{% endif %}

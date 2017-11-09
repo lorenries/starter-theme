@@ -1,0 +1,22 @@
+{% extends "page.twig" %}
+
+{% block content %}
+	<div class="content-wrapper">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+
+			<section class="article-content pb3">
+
+				<div class="article-body mw7 lh-copy f5 f4-ns wola-gray center ph3">
+					{{post.content}}
+				</div>
+			</section>
+
+			<section class="mw8 center ph3 wola-gray">
+				{% include 'components/videos.twig' %}
+			</section>
+
+		</article>
+	</div>
+{% endblock content %}
+
+	

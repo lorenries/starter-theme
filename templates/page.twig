@@ -1,41 +1,73 @@
 {% extends "base.twig" %}
 
+{% block featured %}
+
+	{% if post.thumbnail.src %}
+
+		<section class="w-100 flex justify-center items-center flex-wrap">
+		
+			<div class="w-100">
+				<div style="background: url({{post.thumbnail.src}}) no-repeat center center; background-size: cover;" class="w-100 vh-60">
+				</div>
+			</div>
+
+			<div class="bg-near-white tc mw8 ph4 pt2" style="margin-top: -60px; min-width: 50%;">
+				<h1 class="text-background-black f3 f2-m f1-l center tc headline"><span>{{post.title}}</span></h1>
+
+				{% if post.get_field('page_buttons') %}
+					<div class="flex justify-center items-center">
+					
+						{% for button in post.get_field('page_buttons') %}
+						    <div class="ph2 pv1 ph3-l pv2-l">
+						        <a href="{{button.button_link}}" class="f6 f5-m f4-l link grow ph2 pv2 ph3-m ph4-l pv3-l mb2 mh2 dib white bg-wola-blue shadow-4 flex items-center">{{button.button_text}}</a>
+						    </div>
+						{% endfor %}
+
+					</div>
+				{% endif %}
+
+			</div>
+
+		</section>
+
+	{% else %}
+
+		<h1 class="f1 center lh-title pv4 tc mw8 wola-gray">{{post.title}}</h1>
+		{% if post.get_field('page_buttons') %}
+			<div class="flex justify-center items-center">
+			
+				{% for button in post.get_field('page_buttons') %}
+				    <div class="ph2 pv1 ph3-l pv2-l">
+				        <a href="{{button.button_link}}" class="f6 f5-m f4-l link grow ph2 pv2 ph3-m ph4-l pv3-l mb2 mh2 dib white bg-wola-blue shadow-4 flex items-center">{{button.button_text}}</a>
+				    </div>
+				{% endfor %}
+
+			</div>
+		{% endif %}
+	
+	{% endif %}
+
+{% endblock featured %}
+
 {% block content %}
 	<div class="content-wrapper">
 		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
 
-			{% if post.thumbnail.src %}
-
-				<section class="w-100 flex justify-center items-center flex-wrap">
-				
-					<div class="w-100">
-						<div style="background: url({{post.thumbnail.src}}) no-repeat center center; background-size: cover;" class="w-100 vh-60">
-						</div>
-					</div>
-
-					<div class="bg-near-white tc mw8 ph4 pt2" style="margin-top: -60px; min-width: 50%;">
-						<h1 class="text-background-black f1 center tc headline"><span>{{post.title}}</span></h1>
-					</div>
-
-				</section>
-			
-			{% endif %}
-
 			<section class="article-content mw8 ph3 center wola-gray">
-			
-				{% if not post.thumbnail.src %}
-
-					<h1 class="article-h1 f1 f-subheadline-l tc pv2 pv4-l">{{post.title}}</h1>
-
-				{% endif %}
 
 				<div class="article-body mw7 lh-copy f5 f4-ns wola-gray center ph3 pb4">
 					{{post.content}}
 				</div>
 			</section>
 
-			{% include 'components/partners.twig' %}
-
 		</article>
 	</div><!-- /content-wrapper -->
-{% endblock %}
+{% endblock content %}
+
+{% block related %}
+	{% include 'components/related-post.twig' %}
+{% endblock related %}
+
+{% block partners %}
+	{% include 'components/partners.twig' %}
+{% endblock partners %}

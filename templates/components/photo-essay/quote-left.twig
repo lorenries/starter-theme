@@ -2,5 +2,5 @@
 
 {% block quote %}
 	<blockquote class="relative order-1 order-0-ns image-quote w-100 w-40-ns f4 f2-l pt3 pt0-ns pl2 pl3-m pl4-l bl b--wola-blue bw3 lh-title">{{ TimberImage(item.image).caption }}</blockquote>
-	<img src="{{ TimberImage(item.image).src }}" class="w-100 w-60-ns order-0 order-1-ns" data-action="zoom"/>
+	<img data-src="{{ TimberImage(item.image).src }}" class="w-100 w-60-ns order-0 order-1-ns lozad" data-action="zoom"/>
 {% endblock %}

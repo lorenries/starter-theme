@@ -1,4 +1,4 @@
-jQuery( document ).ready( function( $ ) {
+$(document).ready( function() {
 
   feather.replace();
 
@@ -6,7 +6,7 @@ jQuery( document ).ready( function( $ ) {
   var $mobileMenu = $('.js-menu-mobile');
   var $body = $('body');
 
-  $mobileMenuButton.unbind('click').click(function() {
+  $mobileMenuButton.unbind('click').click(function(event) {
   	event.preventDefault();
   	if ($mobileMenuButton.hasClass('open')) {
   		toggleMenuClose();
@@ -16,6 +16,8 @@ jQuery( document ).ready( function( $ ) {
   })
 
   function toggleMenuOpen() {
+  	$mobileMenu.removeClass('dn');
+  	$mobileMenu.addClass('flex');
   	$mobileMenu.animate({
   		height: '100vh',
   		top: '0'
@@ -23,7 +25,7 @@ jQuery( document ).ready( function( $ ) {
   		$mobileMenuButton.html('<i data-feather="x" class="w2 h-auto pa1"></i>');
   		feather.replace();
   	});
-  	$body.addClass('overflow-hidden');
+  	$body.addClass('prevent-scroll');
   	$mobileMenuButton.addClass('open');
   }
 
@@ -34,8 +36,10 @@ jQuery( document ).ready( function( $ ) {
   	}, 500, 'swing', function() {
   		$mobileMenuButton.html('<i data-feather="menu" class="w2 h-auto pa1"></i>');
   		feather.replace();
+  		$mobileMenu.addClass('dn');
+  		$mobileMenu.removeClass('flex');
   	});
-  	$body.removeClass('overflow-hidden');
+  	$body.removeClass('prevent-scroll');
   	$mobileMenuButton.removeClass('open');
   }
 
@@ -47,7 +51,7 @@ jQuery( document ).ready( function( $ ) {
     });
   });
 
-  $('.js-filter-group').on( 'click', 'a', function() {
+  $('.js-filter-group').on( 'click', 'a', function(event) {
   	event.preventDefault();
     var filterValue = $(this).attr('data-filter');
     $isotopGrid.isotope({ filter: '.' + filterValue });

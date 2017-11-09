@@ -57,6 +57,27 @@ class StarterSite extends TimberSite {
 		return $twig;
 	}
 
+	function language_selector() {
+		$languages = icl_get_languages('skip_missing=0&orderby=code');
+		if(!empty($languages)){
+			foreach($languages as $l){
+				if(!$l['active']) { 
+					return array ($l['url'], $l['native_name']);
+				}
+			}
+		}
+	}
+
 }
 
 new StarterSite();
+
+function  aafd_cdn_srcset ( $sources ) {
+	foreach ($sources as $source) {
+		$sources [$source['value']]['url'] = str_replace('https://www.womenanddrugs.wola.org', 'https://4f4oih3a4j243wk2wy43xkym-wpengine.netdna-ssl.com', $sources[$source['value']]['url']);
+		// you MAY use external domains as well
+		// $ sources [$ source ['value']] ['url'] = str_replace ('http://www.example.com', 'https://static.examplecdnprovider.com', $ sources [$ source ['value']] ['url']);
+	}
+	return  $sources ;
+}
+add_filter ('wp_calculate_image_srcset', 'aafd_cdn_srcset' );

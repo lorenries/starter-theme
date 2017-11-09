@@ -1,8 +1,4 @@
-<div class="mw7 lh-copy f5 f4-ns wola-gray center ph3 pb4">
-	{{description}}
-</div>
-
-<ul class="list flex justify-around f5 f4-m f3-l ph2 pv3 js-filter-group">
+<ul class="list nowrap overflow-x-auto flex-ns justify-around-ns f5 f4-m f3-l ph2 pv3 js-filter-group">
 	<li class="dib mh2 mh3-m mh4-l"><a href="#" class="link wola-gray menu-selected" data-filter="all">All</a></li>
 	{% for country in taxonomies %}
 		<li class="dib mh2 mh3-m mh4-l"><a href="#" class="link wola-gray menu-border-animate" data-filter="{{country.slug}}">{{country.name}}</a></li>

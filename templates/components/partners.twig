@@ -1,17 +1,17 @@
 {% if post.get_field('partners') %}
 
-	<section class="mw8 center wola-gray">
+	<section class="mw8 center wola-gray pb4">
 
 		<h2 class="tc">{{post.get_field('partners_heading')}}</h2>
 
 		<p class="tc f4">{{post.get_field('partners_description')}}</p>
 		
-		<div class="mw9 center flex flex-column flex-row-ns">
+		<div class="mw9 center flex flex-column flex-row-ns items-center">
 			
 			{% for partner in post.get_field('partners') %}
 
 			<div class="pa2">
-				<a href="{{partner.partner_link}}" class="db link" target="_blank"><img src="{{ TimberImage(partner.partner_logo).src}}" alt=""></a>
+				<a href="{{partner.partner_link}}" class="db link" target="_blank"><img src="{{ TimberImage(partner.partner_logo).src}}" alt="" style="max-height:300px;"></a>
 			</div>
 
 			

@@ -1,0 +1,11 @@
+{% if post.get_field('videos') %}
+
+		{% for item in post.get_field('videos') %}
+		    {% if item.acf_fc_layout == 'video_url' %}
+		    	<div class="embed-container mv3">{{ item.video_url }}</div>
+		    {% elseif item.acf_fc_layout == 'text' %}
+		        <div class="article-body mw7 lh-copy f5 f4-ns wola-gray center pv3">{{ item.text }}</div>
+		    {% endif %}
+		{% endfor %}	
+
+{% endif %}

@@ -14,13 +14,13 @@
 		<a href="{{post.link}}" class="db link teaser__parent">
 
 
-			<img src="{{post.thumbnail.src}}" class="w-100 h-auto teaser__child" />
+			<img src="{{post.thumbnail.src|resize(400)}}" class="w-100 h-auto teaser__child" />
 			
 
 			<div class="wola-gray ph2 pv3">
 				<h3 class="ma0 pb2 teaser__headline">{{post.title}}</h3>
 				{% for country in post.terms %}
-				<span class="f4 lato pb2 db">{{ post.get_field('name') }}</span>
+				<span class="f4 lato pb2 db">{{ post.get_field('subject_name') }}</span>
 				<span class="f6 lato pt1 mid-gray db flex items-center"><i data-feather="map-pin" class="pr1 w1 h-auto"></i>{{ country }}</span>
 				{% endfor %}
 			</div>

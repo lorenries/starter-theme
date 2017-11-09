@@ -1,8 +1,8 @@
 {% if TimberImage(item.image).caption %}
-<div class="flex flex-column flex-row-ns items-center justify-center pv4 pv5-ns">
+<div class="flex flex-column flex-row-ns items-center justify-center pv4 pv5-ns o-0">
 	{% block quote %}
 	{% endblock %}
 </div>
 {% else %}
-	<img src="{{ TimberImage(item.image).src }}" class="w-100" data-action="zoom"/>
+	<img data-srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src|retina(1) }} 1x, {{ TimberImage(item.image).src|retina(2) }} 2x" class="w-100 lozad" data-action="zoom"/>
 {% endif %}

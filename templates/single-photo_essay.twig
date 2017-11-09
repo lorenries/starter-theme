@@ -15,7 +15,7 @@
 			
 			{% for item in post.get_field('photo_essay') %}
 			    {% if item.acf_fc_layout == 'image_full_row' %}
-			    	<img src="{{ TimberImage(item.image).src }}" srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src|retina(1) }} 1x, {{ TimberImage(item.image).src|retina(2) }} 2x" class="w-100 pv4 pv5-ns" data-action="zoom"/>
+			    	<img data-srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src }} 1x, {{ TimberImage(item.image).src|retina(2) }} 2x" class="w-100 pv4 pv5-ns lozad" data-action="zoom"/>
 			    {% elseif item.acf_fc_layout == 'image_quote_right_row' %}
 			        {% include "components/photo-essay/quote-right.twig" %}
 			    {% elseif item.acf_fc_layout == 'image_quote_left_row' %}
@@ -36,7 +36,21 @@
 {% endblock %}
 
 {% block scripts %}
-	<script src="{{ site.theme.link }}/static/js/transition.js"></script>
-	<link href="{{ site.theme.link }}/static/css/zoom.css" rel="stylesheet">
-	<script src="{{ site.theme.link }}/static/js/zoom.min.js"></script>
+	<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+	<script src="{{ site.theme.link }}/static/js/lozad.min.js"></script>
+	<script>
+	  lozad('.lozad', {
+	      load: function(el) {
+	      	if (el.getAttribute('data-srcset')) {
+	      		el.srcset = el.getAttribute('data-srcset');
+	      	} else {
+	      		el.src = el.getAttribute('data-src');
+	      	}
+	          el.onload = function() {
+	              el.parentNode.classList.add('image-fade');
+	              el.parentNode.classList.remove('o-0')
+	          }
+	      }
+	  }).observe()
+	</script>
 {% endblock %}
