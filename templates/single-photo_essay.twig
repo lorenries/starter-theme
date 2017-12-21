@@ -5,7 +5,13 @@
 	<div class="content-wrapper">
 		<article class="post-type-{{ post.post_type }} mw9 center ph3 near-white" id="post-{{ post.ID }}">
 			<section class="article-content center">
-				<h1 class="article-h1 f1 f-subheadline-l tc pv2 pv4-l">{{ post.title }}</h1>
+				<div class="pv2 pv3-l">
+				<h1 class="article-h1 f1 f-subheadline-l tc">{{ post.title }}</h1>
+				<div class="flex justify-center items-center">
+					<span class="white flex items-center ph3 f5"><i data-feather="user" class="pr1"></i>{{ post.get_field('subject_name') }}</span>
+					<span class="white flex items-center ph3 f5"><i data-feather="map-pin" class="pr1"></i>{% for country in post.terms %}{{ country }}{% endfor %}</span>
+				</div>
+				</div>
 				<div class="article-body f4 f3-l measure-wide lh-copy center">
 					{{post.content}}
 				</div>
@@ -15,7 +21,7 @@
 			
 			{% for item in post.get_field('photo_essay') %}
 			    {% if item.acf_fc_layout == 'image_full_row' %}
-			    	<img data-srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src }} 1x, {{ TimberImage(item.image).src|retina(2) }} 2x" class="w-100 pv4 pv5-ns lozad" data-action="zoom"/>
+			    	<div class="o-0"><img data-srcset="{{ TimberImage(item.image).src|resize(400) }} 400w, {{ TimberImage(item.image).src|resize(800) }} 800w, {{ TimberImage(item.image).src|resize(1200) }} 1200w, {{ TimberImage(item.image).src }} 1x" class="w-100 pv4 pv5-ns lozad"/></div>
 			    {% elseif item.acf_fc_layout == 'image_quote_right_row' %}
 			        {% include "components/photo-essay/quote-right.twig" %}
 			    {% elseif item.acf_fc_layout == 'image_quote_left_row' %}
@@ -46,11 +52,11 @@
 	      	} else {
 	      		el.src = el.getAttribute('data-src');
 	      	}
-	          el.onload = function() {
-	              el.parentNode.classList.add('image-fade');
-	              el.parentNode.classList.remove('o-0')
-	          }
-	      }
+			el.onload = function() {
+				el.parentNode.classList.add('image-fade');
+				el.parentNode.classList.remove('o-0')
+	      	}
+		  }
 	  }).observe()
 	</script>
 {% endblock %}
